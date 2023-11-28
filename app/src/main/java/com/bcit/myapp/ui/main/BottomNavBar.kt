@@ -19,9 +19,7 @@ import com.bcit.myapp.Screen
 @Composable
 fun BottomNavBar(navController: NavController) {
     val navItems = listOf(
-        NavItem(Icons.Rounded.Home, Screen.HOME.route),
-        NavItem(Icons.Rounded.ArrowBack, Screen.BACK.route),
-        NavItem(Icons.Rounded.List, Screen.LIST.route)
+        NavItem(Icons.Rounded.Home, Screen.HOME.route)
     )
 
     NavigationBar(containerColor = Color(0xFF3F60B5)) {
