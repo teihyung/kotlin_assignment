@@ -9,12 +9,13 @@ class BibleState(
     private val bibleRepository: BibleRepository
 ) {
 
-    var verse:String = ""
-
     var bibleWork: MutableState<List<BibleContext>> = mutableStateOf(emptyList())
 
-    suspend fun getBibleVerse(reference: String) {
-        bibleWork.value = bibleRepository.getBibleVerse(reference).verse
+    suspend fun getBibleVerse(reference: String?) {
+        if (!reference.isNullOrBlank()) {
+            bibleWork.value = bibleRepository.getBibleVerse(reference).verse
+        }
+
     }
 
 }
