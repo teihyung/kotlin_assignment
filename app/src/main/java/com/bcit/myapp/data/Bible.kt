@@ -9,7 +9,7 @@ data class Bible(
 
 data class BibleContext(
     val id: String,
-    val name: String,
+    val book_name: String,
     val chapter:String,
     val verse:String,
     val text:String
