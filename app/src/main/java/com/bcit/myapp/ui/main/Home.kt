@@ -2,7 +2,9 @@ package com.bcit.myapp.ui.main
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,6 +24,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import java.time.format.TextStyle
 
 
 @Composable
@@ -30,23 +34,27 @@ fun Home(bibleState: BibleState) {
     var textFieldValue by remember { mutableStateOf("") }
     var buttonClicked by remember { mutableStateOf(false) }
 
-    // Triggered when textFieldValue changes and button has been clicked
+
     LaunchedEffect(key1 = textFieldValue, key2 = buttonClicked) {
         if (buttonClicked) {
             bibleState.getBibleVerse(textFieldValue)
-            buttonClicked = false  // Reset the button click state
+            buttonClicked = false
         }
     }
 
-    Column {
+
+
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Spacer(modifier = Modifier.height(20.dp))
         CustomTextField(
             value = textFieldValue,
             onValueChanged = { textFieldValue = it },
-            textFieldTitle = "Bible verse:"
+            textFieldTitle = "Bible Verse Search"
         )
+        Spacer(modifier = Modifier.height(20.dp))
         Button(onClick = {
             showResult = true
-            buttonClicked = true  // Indicate that the button has been clicked
+            buttonClicked = true
         }) {
             Text(text = "Submit")
         }
@@ -67,7 +75,12 @@ fun CustomTextField(
     onValueChanged: (String) -> Unit,
     textFieldTitle: String
 ) {
-    Text(textFieldTitle)
+    Text(textFieldTitle,
+        style = androidx.compose.ui.text.TextStyle(
+            fontSize = 20.sp // Specify your desired font size here
+        )
+
+    )
     TextField(
         value = value,
         onValueChange = { onValueChanged(it) },
