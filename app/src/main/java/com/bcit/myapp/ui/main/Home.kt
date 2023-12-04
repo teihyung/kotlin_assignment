@@ -77,7 +77,7 @@ fun CustomTextField(
 ) {
     Text(textFieldTitle,
         style = androidx.compose.ui.text.TextStyle(
-            fontSize = 20.sp // Specify your desired font size here
+            fontSize = 20.sp 
         )
 
     )
